@@ -28,5 +28,7 @@ solve x = map (map combination) (reverse $ tuplify x)
 
 main :: IO ()
 main = do
-    let result = unlines $ map (unwords . intToString) $ solve 4
+    contents <- readFile "testcase.txt"
+    let inputs = map read . words $ contents
+    let result = unlines $ map (unwords . intToString) $ solve (head inputs)
     putStrLn result
